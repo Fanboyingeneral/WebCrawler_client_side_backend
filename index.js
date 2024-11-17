@@ -7,7 +7,7 @@ const startCrawlScheduler = require('./utils/scheduler');
 const { processCrawlQueue } = require('./controllers/crawlController');
 
 const app = express();
-const PORT = 6000; // Client backend port
+const CLIENT_BACKEND_PORT = process.env.CLIENT_BACKEND_PORT; // Client backend port
 
 // Middleware
 app.use(express.json({ limit: '50mb' })); // Adjust the limit as needed
@@ -21,9 +21,9 @@ app.use('/api/crawl', crawlRoutes);
 
 
 // Start server
-app.listen(PORT, () => {
+app.listen(CLIENT_BACKEND_PORT, () => {
     
-    console.log(`Client backend server running on port ${PORT}`);
+    console.log(`Client backend server running on port ${CLIENT_BACKEND_PORT}`);
         // Wait 50 seconds before executing the remaining steps
         setTimeout(() => {
             console.log('Initializing after 50 seconds delay...');
